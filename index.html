@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chase Points Optimizer</title>
+<meta name="description" content="Type where you're about to pay and see which of your Chase cards earns the most.">
+<meta name="theme-color" content="#eef0f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1218" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <p class="brand"><span class="brand-mark" aria-hidden="true"></span>Chase Points Optimizer</p>
+    <a class="wallet-link" href="#wallet" id="wallet-link">Your wallet: <span id="wallet-count">0 cards</span></a>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <section class="checkout" aria-labelledby="q-label">
+    <label id="q-label" for="q" class="ask">Where are you about to pay?</label>
+    <div class="combo">
+      <input id="q" type="text" inputmode="search" enterkeyhint="go" autocomplete="off" autocapitalize="off" spellcheck="false"
+        role="combobox" aria-expanded="false" aria-controls="suggestions" aria-autocomplete="list"
+        placeholder="Whole Foods, Shell, Delta, a hotel…">
+      <button type="button" class="clear" id="q-clear" aria-label="Clear search" hidden>&times;</button>
+      <ul id="suggestions" role="listbox" aria-label="Matching places" hidden></ul>
+    </div>
+    <div class="quick" id="quick" aria-label="Common kinds of places"></div>
+    <div class="modifiers">
+      <label class="toggle"><input type="checkbox" id="online"><span>Paying online or in an app</span></label>
+      <label class="toggle"><input type="checkbox" id="foreign"><span>Charged in a foreign currency</span></label>
+      <label class="amount"><span class="amount-sign" aria-hidden="true">$</span><input id="amount" type="text" inputmode="decimal" placeholder="Amount (optional)" aria-label="Purchase amount in dollars"></label>
+    </div>
+  </section>
+
+  <section class="verdict" id="verdict" aria-live="polite" aria-label="Recommendation"></section>
+
+  <aside class="side">
+    <section class="panel" id="wallet" aria-labelledby="wallet-title">
+      <div class="panel-head">
+        <h2 id="wallet-title">Cards you own</h2>
+        <button type="button" class="text-button" id="wallet-clear">Clear all</button>
+      </div>
+      <p class="example-note" id="example-note" hidden>This is an example wallet. Check the cards you actually have and it becomes yours.</p>
+      <div id="wallet-groups"></div>
+    </section>
+
+    <section class="panel" id="values" aria-labelledby="values-title">
+      <div class="panel-head">
+        <h2 id="values-title">What your points are worth</h2>
+        <button type="button" class="text-button" id="values-reset">Reset</button>
+      </div>
+      <p class="panel-note">Cents per point, used to compare points, miles and cash back. Defaults follow The Points Guy's October 2026 valuations. Lower them if you usually cash out.</p>
+      <div id="values-fields" class="values-grid"></div>
+    </section>
+
+    <section class="panel" id="rotation" aria-labelledby="rotation-title" hidden>
+      <div class="panel-head">
+        <h2 id="rotation-title">Freedom 5% categories</h2>
+      </div>
+      <div id="rotation-body"></div>
+    </section>
+  </aside>
+</main>
+
+<footer class="wrap footer">
+  <p>Earn rates last checked <span id="data-date"></span>. Card terms change, so confirm big purchases on the issuer's site. This is an independent tool and is not affiliated with JPMorgan Chase. Your selections are saved only in this browser.</p>
+</footer>
+
+<script src="js/merchants.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
