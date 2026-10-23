@@ -12,7 +12,7 @@ It's a static web page with no build step, no server and no tracking.
 
 **On your computer:** open `index.html` in a browser, or run `npm start` and visit http://localhost:8000.
 
-**On your phone:** publish the repo with GitHub Pages (Settings → Pages → Deploy from branch → `main` / root). Open the URL, then use "Add to Home Screen" to get an app icon.
+**On your phone:** open https://rusheekb.github.io/chase-points-optimizer/ and use "Add to Home Screen" to get an app icon. Every push to `main` runs the tests and republishes the site (`.github/workflows/pages.yml`). This needs Settings → Pages → Source set to "GitHub Actions".
 
 ## How it picks a card
 
